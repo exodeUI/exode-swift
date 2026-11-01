@@ -27,12 +27,24 @@ app can depend on ExodeUI unconditionally: `ExodeUICanvas` renders an
 
 ## Installation
 
-The package lives in the ExodeUI monorepo at `packages/swift`. Add it to an
-Xcode project or another Swift package with a local path:
+### In Xcode
+
+1. Open your project in Xcode.
+2. Go to **File → Add Package Dependencies...**
+3. Paste the repository URL:
+   ```
+   https://github.com/exodeUI/exode-swift.git
+   ```
+4. Choose **Up to Next Major Version** from `7.6.0` (or your preferred version/branch).
+5. Click **Add Package** and link `ExodeUI` to your target.
+
+### In `Package.swift`
+
+Add ExodeUI to your package's `dependencies`:
 
 ```swift
 dependencies: [
-    .package(path: "../exodeui/packages/swift"),
+    .package(url: "https://github.com/exodeUI/exode-swift.git", from: "7.6.0"),
 ]
 ```
 
@@ -42,17 +54,12 @@ Then add `ExodeUI` to your target:
 .target(
     name: "MyApp",
     dependencies: [
-        .product(name: "ExodeUI", package: "swift"),
+        .product(name: "ExodeUI", package: "exode-swift"),
     ]
 )
 ```
 
-Swift Package Manager requires a repository root to contain `Package.swift`.
-If you consume ExodeUI from a remote URL, mirror `packages/swift` into its own
-repository (or a git subtree) and point SwiftPM at that repository.
-
-The engine bundle and `index.html` are committed, so building the package does
-not require Node.js.
+The engine bundle and `index.html` are pre-compiled and committed into the package resources, so building does not require Node.js or any external tooling.
 
 ## Quick start
 
