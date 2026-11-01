@@ -1,0 +1,141 @@
+{
+  "id": "flutter-demo",
+  "name": "Flutter Demo",
+  "width": 640,
+  "height": 420,
+  "backgroundColor": "#0b1220",
+  "startupAnimationId": "float",
+  "objects": [
+    {
+      "id": "card",
+      "name": "Card",
+      "type": "Shape",
+      "zIndex": 1,
+      "transform": { "x": 320, "y": 210, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+      "geometry": { "type": "Rectangle", "width": 520, "height": 300, "cornerRadius": 32 },
+      "style": {
+        "fill": { "type": "Solid", "color": "#111c33", "opacity": 1 },
+        "stroke": { "type": "Solid", "color": "#26385c", "width": 1, "opacity": 1 }
+      },
+      "interactions": [
+        {
+          "id": "card-pulse",
+          "event": "onClick",
+          "trigger": "Click",
+          "triggers": ["onClick"],
+          "action": "Play Animation",
+          "targetAnimationId": "pulse"
+        }
+      ]
+    },
+    {
+      "id": "orb",
+      "name": "Orb",
+      "type": "Shape",
+      "zIndex": 2,
+      "transform": { "x": 320, "y": 150, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+      "geometry": { "type": "Ellipse", "width": 120, "height": 120 },
+      "style": {
+        "fill": {
+          "type": "LinearGradient",
+          "angle": 135,
+          "stops": [
+            { "color": "#34d399", "position": 0 },
+            { "color": "#3b82f6", "position": 1 }
+          ]
+        }
+      }
+    },
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Shape",
+      "zIndex": 3,
+      "transform": { "x": 320, "y": 255, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+      "geometry": {
+        "type": "Text",
+        "text": "Hello Flutter",
+        "fontSize": 44,
+        "fontFamily": "Inter",
+        "fontWeight": "700",
+        "textAlign": "center",
+        "textVerticalAlign": "middle",
+        "width": 480,
+        "height": 56
+      },
+      "style": { "fill": { "type": "Solid", "color": "#ffffff", "opacity": 1 } }
+    },
+    {
+      "id": "subtitle",
+      "name": "Subtitle",
+      "type": "Shape",
+      "zIndex": 4,
+      "transform": { "x": 320, "y": 300, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+      "geometry": {
+        "type": "Text",
+        "text": "Tap the card · .bexode asset",
+        "fontSize": 16,
+        "fontFamily": "Inter",
+        "fontWeight": "500",
+        "textAlign": "center",
+        "textVerticalAlign": "middle",
+        "width": 480,
+        "height": 28
+      },
+      "style": { "fill": { "type": "Solid", "color": "#8fa3c8", "opacity": 1 } }
+    }
+  ],
+  "animations": [
+    {
+      "id": "float",
+      "name": "Float",
+      "duration": 4,
+      "tracks": [
+        {
+          "object_id": "orb",
+          "property": "transform.y",
+          "keyframes": [
+            { "time": 0, "value": 150, "easing": "easeInOutQuad" },
+            { "time": 2, "value": 110, "easing": "easeInOutQuad" },
+            { "time": 4, "value": 150, "easing": "easeInOutQuad" }
+          ]
+        },
+        {
+          "object_id": "orb",
+          "property": "transform.rotation",
+          "keyframes": [
+            { "time": 0, "value": 0, "easing": "linear" },
+            { "time": 4, "value": 12, "easing": "linear" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pulse",
+      "name": "Pulse",
+      "duration": 0.6,
+      "tracks": [
+        {
+          "object_id": "orb",
+          "property": "transform.scale_x",
+          "keyframes": [
+            { "time": 0, "value": 1, "easing": "easeOutBack" },
+            { "time": 0.3, "value": 1.25, "easing": "easeInOutQuad" },
+            { "time": 0.6, "value": 1, "easing": "easeInOutQuad" }
+          ]
+        },
+        {
+          "object_id": "orb",
+          "property": "transform.scale_y",
+          "keyframes": [
+            { "time": 0, "value": 1, "easing": "easeOutBack" },
+            { "time": 0.3, "value": 1.25, "easing": "easeInOutQuad" },
+            { "time": 0.6, "value": 1, "easing": "easeInOutQuad" }
+          ]
+        }
+      ]
+    }
+  ],
+  "stateVariables": [],
+  "physics": { "enabled": false, "gravity": { "x": 0, "y": 9.8 } }
+}
